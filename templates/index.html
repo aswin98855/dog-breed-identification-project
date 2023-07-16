@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Model Application</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            display: inline-flex;
+            font-family: "Impact", san;
+            background: url("static/background-image/dog-photo-2.jpeg");
+            font-size: 4rem;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: #5b728a54;
+            animation: move 30s linear infinite;
+            letter-spacing: .3rem;
+            text-align: center;
+        }
+
+        @keyframes move {
+            from {
+                background-position: 0 80%;
+            }
+
+            to {
+                background-position: 100% 50%;
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .file-input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .file-input-container label {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .file-input-container input[type="file"] {
+            display: none;
+        }
+
+        .selected-file {
+            margin-top: 5px;
+            font-size: 14px;
+            font-style: italic;
+            color: #888;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .breed-image {
+            display: block;
+            margin: 20px auto;
+            max-width: 350px;
+            max-height: 350px;
+        }
+
+        .transparent-image {
+            opacity: 0.5;
+            /* Adjust the value between 0 and 1 */
+            z-index: -1;
+        }
+
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+            height: 200px;
+        }
+
+        .card {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+
+        .card:hover {
+            transform: rotateY(180deg);
+        }
+
+        .front,
+        .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .front {
+            background-color: #888;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            opacity: 0.7;
+            cursor: pointer;
+            transition: transform 0.5s, opacity 0.5s;
+        }
+
+        .front::before {
+            content: 'Hover to see prediction probability';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 14px;
+            font-style: italic;
+            opacity: 1;
+            transition: opacity 0.3s;
+            width: inherit;
+            box-sizing: border-box;
+        }
+
+        .front:hover::before {
+            opacity: 0;
+        }
+
+        .back {
+            background: url("static/background-image/dog-photo-2.jpeg");
+            color: white;
+            transform: rotateY(180deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover .back {
+            opacity: 1;
+        }
+
+        .probability-text {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 14px;
+            font-style: italic;
+            padding: 5px 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover .probability-text {
+            opacity: 1;
+        }
+        .back_card_image{
+            display: block;
+            max-width: 200px;
+            max-height: 200px;
+        }
+    </style>
+
+    </style>
+    <script>
+        function displayFileName() {
+            var fileInput = document.getElementById("file-input");
+            var selectedFileText = document.getElementById("selected-file-text");
+            selectedFileText.textContent = fileInput.files[0].name;
+        }
+    </script>
+</head>
+
+<body>
+    <img class="background-image transparent-image" src="static/background-image/dog-photo-2.jpeg"
+        alt="Transparent Image">
+    <h1>DOG BREED PREDICTION</h1>
+    <form method="POST" action="/predict" enctype="multipart/form-data">
+        <div class="file-input-container">
+            <label for="file-input">Choose an image</label>
+            <input id="file-input" type="file" name="image" accept="image/*" required onchange="displayFileName()">
+            <div id="selected-file-text" class="selected-file"></div>
+        </div>
+        <input type="submit" value="Predict">
+    </form>
+    
+    <br>
+    
+    {% if prediction %}
+        {% if image_path %}
+            <img src="{{ image_path }}" class="breed-image" alt="Predicted Breed">
+        {% endif %}
+        <h2>Dog Breed: {{ prediction }}</h2>
+        <br>
+        <div class="card-container">
+            <div class="card">
+                <div class="front">
+                    <div class="breed-text">Dog Breed: {{ prediction }}</div>
+                </div>
+                <div class="back">
+                    <img src="{{ image_path }}" class="back_card_image" alt="Predicted Breed">
+                    <div class="probability-text">Probability: {{ probability }}%</div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    
+</body>
+
+</html>
