@@ -9,8 +9,11 @@ The dataset used is from Kaggle's dog breed identification.
 **Some information about the data:**
 
 We're dealing with images (unstructured data) so it's probably best we use deep learning/transfer learning.
+
 There are 120 breeds of dogs (this means there are 120 different classes).
+
 There are around 10,000+ images in the training set (these images have labels).
+
 There are around 10,000+ images in the test set(these images have no labels, because we'll want to predict them).
 
 
@@ -23,11 +26,14 @@ Open your project folder in Visual Studio Code.
 
 
 Make sure you have the required dependencies installed. You can use a virtual environment to keep the dependencies isolated. 
+
 To create a virtual environment, open a terminal in Visual Studio Code and run the following commands:
 
 
 `python -m venv venv`  # Create a virtual environment
+
 `source venv/bin/activate`  # Activate the virtual environment (for macOS/Linux)
+
 `.\venv\Scripts\activate`  # Activate the virtual environment (for Windows)
 
 **Install the necessary packages by running the following command in the terminal:**
