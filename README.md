@@ -1,5 +1,7 @@
 # dog-breed-identification-project
 
+## (The clear explanation of Training Model is clearly explained in Google Colab Notebooks attached in this repository. Another colab notebook is attached which is shortform of the training model)
+
 This project builds an multi-class image classifier using TensorFlow 2.0 and TensorFlow Hub.
 
 Identifying the breed of a dog given an image of a dog.
@@ -15,6 +17,14 @@ There are 120 breeds of dogs (this means there are 120 different classes).
 There are around 10,000+ images in the training set (these images have labels).
 
 There are around 10,000+ images in the test set(these images have no labels, because we'll want to predict them).
+
+## Creating Model (Mobilenet v2)
+
+![p5](https://github.com/aswin98855/dog-breed-identification-project/assets/116991167/800f8c77-89f3-424c-bc9c-1118256ba809)
+
+## Training Model
+
+![p4](https://github.com/aswin98855/dog-breed-identification-project/assets/116991167/41502934-c524-4af3-9731-745b6c45fcdd)
 
 ## Opening Page of Dog Breed Prediction
 
