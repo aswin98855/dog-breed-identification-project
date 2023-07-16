@@ -1,4 +1,4 @@
-![udemy certificate](https://github.com/aswin98855/dog-breed-identification-project/assets/116991167/8cfed3bc-f1c7-4001-8414-85805f42285e)![dog-photo-3](https://github.com/aswin98855/dog-breed-identification-project/assets/116991167/4f4f52d6-5caa-499d-8c6d-84e9b1fafbf3)![dog-photo-2](https://github.com/aswin98855/dog-breed-identification-project/assets/116991167/aa2f5e39-0bde-498b-82d7-ee953a6cf4c4)# dog-breed-identification-project
+# dog-breed-identification-project
 
 This project builds an multi-class image classifier using TensorFlow 2.0 and TensorFlow Hub.
 
