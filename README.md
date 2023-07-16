@@ -16,7 +16,17 @@ There are around 10,000+ images in the training set (these images have labels).
 
 There are around 10,000+ images in the test set(these images have no labels, because we'll want to predict them).
 
+## Opening Page of Dog Breed Prediction
 
+![p1](https://github.com/aswin98855/dog-breed-identification-project/assets/116991167/3f170873-3b3e-4e0a-b355-226a1ed9e646)
+
+## Dog Breed Prediction
+
+![p3](https://github.com/aswin98855/dog-breed-identification-project/assets/116991167/70717a90-f2e1-4bcc-87a9-5be3a6df1924)
+
+## Prediction Probability Representation
+
+![p2](https://github.com/aswin98855/dog-breed-identification-project/assets/116991167/bbdd9eaa-eb83-4766-9cbf-afe3083b770c)
 
 # Set up for flask :
 
