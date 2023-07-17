@@ -1,6 +1,6 @@
 # dog-breed-identification-project
 
-## (The clear explanation of Training Model is clearly explained in pdf of Google Colab Notebooks attached in this repository. Another colab notebook pdf is attached which is shortform of the training model. To have hands on experience on training model download ipynb notebook and open with colab and run each cell and observe it...some cells may take some hours to complete due to training and testing of 10,000+ images each...)
+## (The clear explanation of Training Model is clearly explained in pdf of Google Colab Notebooks attached in this repository. Another colab notebook pdf is attached which is shortform of the training model. To have hands on experience on training model download ipynb notebooks and open with colab and run each cell and observe it...some cells may take some hours to complete based on your system due to training and testing of 10,000+ images each...)
 
 This project builds an multi-class image classifier using TensorFlow 2.0 and TensorFlow Hub.
 
